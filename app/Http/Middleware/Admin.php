@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class Admin
@@ -16,6 +17,10 @@ class Admin
     public function handle(Request $request, Closure $next): Response
     {
         // echo 'Hello from Admin Middleware';
+        // dd('hi');
+       if(Auth::user()->role=='user'){
+        abort(401);
+       }
         return $next($request);
     }
 }

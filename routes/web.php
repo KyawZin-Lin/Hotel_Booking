@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Hotel\RoomTypeController;
+use App\Models\RoomTypes;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +27,13 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view("UI.home");
     })->name('dashboard');
+    // Route::get('/hotels',function (){
+    //     dd('you are entering');
+    // })->middleware('admin');
+    Route::middleware('admin')->prefix('hotels')->group(function(){
+        Route::get('/home',function(){
+            return view('hotel.layouts.master');
+        });
+        Route::resource('room-types', RoomTypeController::class);
+    });
 });

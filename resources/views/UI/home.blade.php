@@ -24,7 +24,7 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                         @if (Auth::user()->role=='admin' || Auth::user()->role=='hotel')
-                        <li class="nav-item"><a class="nav-link" href="#!">Check Hotel</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{url('/hotels/home')}}">Check Hotel</a></li>
                         @endif
 
                         <li class="nav-item dropdown">
